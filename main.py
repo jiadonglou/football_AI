@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[19]:
 
 
 # Import necessary modules
@@ -9,6 +9,8 @@ from rasa_nlu.training_data import load_data
 from rasa_nlu.config import RasaNLUModelConfig
 from rasa_nlu.model import Trainer
 from rasa_nlu import config
+# In[47]:
+
 
 import requests
 import json
@@ -34,8 +36,6 @@ training_data = load_data('./data/football-rasa-chinese.json')
 # Create an interpreter by training the model
 interpreter = trainer.train(training_data)
 
-
-# In[ ]:
 
 
 
@@ -64,18 +64,15 @@ responses = [
     '我需要更多信息！ 请告诉我这场比赛的{}？',
     "我找到这场比赛了，请问需要什么数据？", 
     "不好意思，我没办法找到您要的比赛信息。请重新输入要求。",
-    '{} 主队{} 客队{} 比分为{}-{} 现在{}分钟',
+    '{} \n主队{} 客队{} \n比分为{}-{} 现在{}分钟',
     "本场{}的比赛在{}{}的{}举办,可容纳{}人",
     "主队阵容:{}\n客队阵容：{}",
     "角球 {}:{}\n黄牌 {}:{}\n红牌 {}:{}\n点球 {}:{}\n替换 {}:{}\n进攻 {}:{}\n危险进攻 {}:{}\n射正 {}:{}\n射偏 {}:{}\n控球率 {}%:{}%",
-    '1.说\‘你好\’来启动搜寻功能\n2.说\'再见\'来结束搜寻功能\n3.告诉我足球比赛的主队，客队，及日期信息来查询比赛。我可以帮你查询比赛实时比分，数据，阵容，场馆，以及事件。\n4.我也可以帮你查询正在进行中的比赛，并且根据你喜欢的国家来过滤比赛信息',                          
-    "I found the match for you. What kind of data do you need?", 
-    "Sorry I cannot find the match for you. Please re-enter information.",
-    '{} 对 {} The scores is {}:{} and now it is {} mins'
+    '1.说\'你好\'来启动搜寻功能\n2.说\'再见\'来结束搜寻功能\n3.告诉我足球比赛的主队，客队，及日期信息来查询比赛。我可以帮你查询比赛实时比分，数据，阵容，场馆，以及事件。\n4.我也可以帮你查询正在进行中的比赛，并且根据你喜欢的国家来过滤比赛信息'                       
 ]
 
 
-# In[ ]:
+# In[48]:
 
 
 def translate(source, fromLang, toLang):
@@ -261,7 +258,7 @@ def inplay_event():
 
 
 def voice_message():
-    filename = './data/msg.wav'
+    filename = './temp/msg.wav'
     extension = filename[filename.rindex('.')+1:]
     if extension == "wav" :
         # load wav
@@ -276,7 +273,7 @@ def voice_message():
         
 
 
-# In[ ]:
+# In[49]:
 
 
 def search_respond(message, params):
@@ -318,12 +315,11 @@ def search_respond(message, params):
         else:
             data_type = params["data"]
             time_str = ""
-            print(data_type)
             if results["results"][0]["time_status"] == "3": 
                 time_str = "全场" + results["results"][0]["extra"]["length"]  
             if results["results"][0]["time_status"] == "1":
                 time_str = "正在比赛"+ str(results["results"][0]["timer"]["tm"])
-            if data_type == "分数":
+            if data_type == "分数" or data_type == "比分":
                 return responses[3].format(translate(results["results"][0]["league"]["name"],'english','chinese'),translate(results["results"][0]["home"]["name"],'english','chinese'),translate(results["results"][0]["away"]["name"],'english','chinese'),results["results"][0]["scores"]["2"]["home"],results["results"][0]["scores"]["2"]["away"], time_str),params
             if data_type == '场馆':
                 stadium = results["results"][0]["extra"]["stadium_data"]
@@ -342,7 +338,7 @@ def search_respond(message, params):
                 
 
 
-# In[ ]:
+# In[54]:
 
 
 def inplay_respond(message, params):
@@ -356,23 +352,36 @@ def inplay_respond(message, params):
     if len(results['results']) == 0:
         return "没有进行中的比赛"
     n = results['pager']['total']
-    #n = min(25, results['pager']['total'])  
+    #n = min(15, results['pager']['total']) 
     if "league" not in params:
+        j = 0
         for i in range(n):
             if results['results'][i]['league']['cc'] in majorLeague: 
-                inplay_str = inplay_str + "\n" + str(results['results'][i]['timer']['tm']) + "\' " + translate(results['results'][i]['league']['name'],'english','chinese') + " " + translate(results['results'][i]['home']['name'],'english','chinese') + " " + str(results['results'][i]['scores']['2']['home']) + "-" + str(results['results'][i]['scores']['2']['away']) + " " + translate(results['results'][i]['away']['name'],'english','chinese')                       
+                if j < 10:  
+                    inplay_str = inplay_str + "\n" + str(results['results'][i]['timer']['tm']) + "\' " + translate(results['results'][i]['league']['name'],'english','chinese') + " \n      " + translate(results['results'][i]['home']['name'],'english','chinese') + " " + str(results['results'][i]['scores']['2']['home']) + "-" + str(results['results'][i]['scores']['2']['away']) + " " + translate(results['results'][i]['away']['name'],'english','chinese')                       
+                    j = j + 1
+        if j < 10:
+            for i in range(n):
+                if results['results'][i]['league']['cc'] not in majorLeague: 
+                    if j < 10:
+                        inplay_str = inplay_str + "\n" + str(results['results'][i]['timer']['tm']) + "\' " + translate(results['results'][i]['league']['name'],'english','chinese') + " \n      " + translate(results['results'][i]['home']['name'],'english','chinese') + " " + str(results['results'][i]['scores']['2']['home']) + "-" + str(results['results'][i]['scores']['2']['away']) + " " + translate(results['results'][i]['away']['name'],'english','chinese')                       
+                        j = j + 1               
     else:
         for i in range(n):
             cc = leagueDict[params["league"]]
             if results['results'][i]['league']['cc'] == cc: 
-                inplay_str = inplay_str + "\n" + str(results['results'][i]['timer']['tm']) + "\' " + translate(results['results'][i]['league']['name'],'english','chinese') + " " + translate(results['results'][i]['home']['name'],'english','chinese') + " " + str(results['results'][i]['scores']['2']['home']) + "-" + str(results['results'][i]['scores']['2']['away']) + " " + translate(results['results'][i]['away']['name'],'english','chinese')                       
-    del params['league']
+                inplay_str = inplay_str + "\n" + str(results['results'][i]['timer']['tm']) + "\' " + translate(results['results'][i]['league']['name'],'english','chinese') + " \n      " + translate(results['results'][i]['home']['name'],'english','chinese') + " " + str(results['results'][i]['scores']['2']['home']) + "-" + str(results['results'][i]['scores']['2']['away']) + " " + translate(results['results'][i]['away']['name'],'english','chinese')                       
+    if 'league' in params:
+        del params['league']    
+    if inplay_str == "进行中的比赛：":
+        inplay_str = "当前无进行中的比赛"
+        
     return inplay_str, params
     
     
 
 
-# In[ ]:
+# In[55]:
 
 
 def respond(message, params):
@@ -388,17 +397,15 @@ def respond(message, params):
         params = {"searching" : False}
         return '再见～',params
     if intent == 'event_search' :
-        print('event_search')
         return search_respond(message, params)
     if intent == 'inplay_event':
-        print('inplay_event')
         return inplay_respond(message, params)
     else:
         return search_respond(message, params)
     
 
 
-# In[15]:
+# In[56]:
 
 
 def trans_mp3_to_wav(filepath):
@@ -407,7 +414,7 @@ def trans_mp3_to_wav(filepath):
     low_sample_rate.export("./temp/msg.wav", format="wav",bitrate="16k")
 
 
-# In[16]:
+# In[58]:
 
 
 db = {}
@@ -420,24 +427,24 @@ bot = Bot()
 @bot.register()
 def reply_friend(msg):
     db = read_params()
+    response = ""
     if msg.type == 'Recording':
         if msg.sender.remark_name not in db:
             db[msg.sender.remark_name] = {"searching" : False} 
+        print("来自" + msg.sender.remark_name + "的语音消息：")
         msg.get_file("./temp/msg.mp3")
         trans_mp3_to_wav("./temp/msg.mp3")
-        print(voice_message())
         response, params = respond(str(voice_message()), db[msg.sender.remark_name])
         db[msg.sender.remark_name] = params
         
     if msg.type == 'Text':
         if msg.sender.remark_name not in db:
             db[msg.sender.remark_name] = {"searching" : False}           
-        print(msg.sender)
-        print(msg)
+        print("来自" + msg.sender.remark_name + "的文字消息：" + str(msg.text))
         input = str(msg.text)
         response, params = respond(input, db[msg.sender.remark_name])
         db[msg.sender.remark_name] = params
-        print(response)
+
         
 
     write_params(db)
