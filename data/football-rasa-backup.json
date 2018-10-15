@@ -1,0 +1,830 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "你好", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "再见", 
+        "intent": "goodbye", 
+        "entities": []
+      },
+      {
+        "text": "查询比赛", 
+        "intent": "event_search", 
+        "entities": []
+      },
+      {
+        "text": "我想查找一个比赛", 
+        "intent": "event_search", 
+        "entities": []
+      },
+      {
+        "text": "帮我看一下一个对决", 
+        "intent": "event_search", 
+        "entities": []
+      },
+      {
+        "text": "帮我查一下洛杉矶和西雅图的比赛", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 5,
+            "end": 8,
+            "value": "洛杉矶",
+            "entity": "home"
+          },
+        {
+            "start": 9,
+            "end": 12,
+            "value": "西雅图",
+            "entity": "away"
+          }]
+      }, 
+      {
+        "text": "帮我查一下LA和SEA的比赛", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 5,
+            "end": 7,
+            "value": "LA",
+            "entity": "home"
+          },
+        {
+            "start": 8,
+            "end": 11,
+            "value": "SEA",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "帮我查一下Los Angeles和Seattle的比赛", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 5,
+            "end": 16,
+            "value": "Los Angeles",
+            "entity": "home"
+          },
+        {
+            "start": 17,
+            "end": 24,
+            "value": "Seattle",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "给我看看北卡和温哥华的对决", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 4,
+            "end": 6,
+            "value": "北卡",
+            "entity": "home"
+          },
+        {
+            "start": 7,
+            "end": 10,
+            "value": "温哥华",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "芝加哥对迈阿密今天的比分是多少？", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 3,
+            "value": "芝加哥",
+            "entity": "home"
+          },
+        {
+            "start": 4,
+            "end": 7,
+            "value": "迈阿密",
+            "entity": "home"
+          },
+        {
+            "start": 7,
+            "end": 9,
+            "value": "今天",
+            "entity": "date"
+          },
+        {
+            "start": 10,
+            "end": 12,
+            "value": "比分",
+            "entity": "date"
+          }]
+      },
+      {
+        "text": "查询比赛 圣何塞踢迈阿密", 
+        "intent": "event_search", 
+        "entities": [          {
+            "start": 5,
+            "end": 8,
+            "value": "圣何塞",
+            "entity": "home"
+          },
+          {
+            "start": 9,
+            "end": 12,
+            "value": "迈阿密",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "达拉斯对纽约", 
+        "intent": "event_search", 
+        "entities": [          {
+            "start": 0,
+            "end": 3,
+            "value": "达拉斯",
+            "entity": "home"
+          },
+          {
+            "start": 4,
+            "end": 6,
+            "value": "纽约",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "帮我查询一下比赛：上海申花和北京国安", 
+        "intent": "event_search", 
+        "entities": [          {
+            "start": 9,
+            "end": 13,
+            "value": "上海申花",
+            "entity": "home"
+          },
+          {
+            "start": 14,
+            "end": 18,
+            "value": "北京国安",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "I want to know live score of game San Francisco vs Chicago", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 35,
+            "end": 49,
+            "value": "San Francisco",
+            "entity": "home"
+          },
+          {
+            "start": 53,
+            "end": 60,
+            "value": "Chicago",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "我想知道实时比分 旧金山vs芝加哥", 
+        "intent": "event_search", 
+        "entities": [          {
+            "start": 6,
+            "end": 8,
+            "value": "比分",
+            "entity": "data"
+          },
+          {
+            "start": 9,
+            "end": 12,
+            "value": "旧金山",
+            "entity": "home"
+          },
+          {
+            "start": 14,
+            "end": 17,
+            "value": "芝加哥",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "我想搜索多伦多对温哥华20181006的比赛数据", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 4,
+            "end": 7,
+            "value": "多伦多",
+            "entity": "home"
+          },
+          {
+            "start": 8,
+            "end": 11,
+            "value": "温哥华",
+            "entity": "away"
+          },
+          {
+            "start": 11,
+            "end": 19,
+            "value": "20181006",
+            "entity": "date"
+          },
+          {
+            "start": 22,
+            "end": 24,
+            "value": "数据",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "查询多伦多对温哥华20181006的比赛阵容", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 2,
+            "end": 5,
+            "value": "多伦多",
+            "entity": "home"
+          },
+          {
+            "start": 6,
+            "end": 9,
+            "value": "温哥华",
+            "entity": "away"
+          },
+          {
+            "start": 9,
+            "end": 17,
+            "value": "20181006",
+            "entity": "date"
+          },
+          {
+            "start": 20,
+            "end": 22,
+            "value": "阵容",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "看看多伦多对温哥华20181006的比赛场地", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 2,
+            "end": 5,
+            "value": "多伦多",
+            "entity": "home"
+          },
+          {
+            "start": 6,
+            "end": 9,
+            "value": "温哥华",
+            "entity": "away"
+          },
+          {
+            "start": 9,
+            "end": 17,
+            "value": "20181006",
+            "entity": "date"
+          },
+          {
+            "start": 20,
+            "end": 22,
+            "value": "场馆",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "看看多伦多对温哥华20181006的比赛事件", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 2,
+            "end": 5,
+            "value": "多伦多",
+            "entity": "home"
+          },
+          {
+            "start": 6,
+            "end": 9,
+            "value": "温哥华",
+            "entity": "away"
+          },
+          {
+            "start": 9,
+            "end": 17,
+            "value": "20181006",
+            "entity": "date"
+          },
+          {
+            "start": 20,
+            "end": 22,
+            "value": "事件",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "查询今天凤凰城对拉斯维加斯的比赛", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 2,
+            "end": 4,
+            "value": "今天",
+            "entity": "date"
+          },
+          {
+            "start": 4,
+            "end": 7,
+            "value": "凤凰城",
+            "entity": "home"
+          },
+          {
+            "start": 8,
+            "end": 13,
+            "value": "拉斯维加斯",
+            "entity": "away"
+          }]
+      },
+      {
+        "text": "查询昨天凤凰城对拉斯维加斯的比赛数据", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 2,
+            "end": 4,
+            "value": "今天",
+            "entity": "date"
+          },
+          {
+            "start": 4,
+            "end": 7,
+            "value": "凤凰城",
+            "entity": "home"
+          },
+          {
+            "start": 8,
+            "end": 13,
+            "value": "拉斯维加斯",
+            "entity": "away"
+          },
+          {
+            "start": 16,
+            "end": 18,
+            "value": "数据",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "查询后天凤凰城对波特兰的比赛数据", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 2,
+            "end": 4,
+            "value": "后天",
+            "entity": "date"
+          },
+          {
+            "start": 4,
+            "end": 7,
+            "value": "温哥华",
+            "entity": "home"
+          },
+          {
+            "start": 8,
+            "end": 13,
+            "value": "波特兰",
+            "entity": "away"
+          },
+          {
+            "start": 16,
+            "end": 18,
+            "value": "数据",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "查询大后天凤凰城对波特兰的比赛数据", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 2,
+            "end": 5,
+            "value": "大后天",
+            "entity": "date"
+          },
+          {
+            "start": 5,
+            "end": 8,
+            "value": "温哥华",
+            "entity": "home"
+          },
+          {
+            "start": 9,
+            "end": 14,
+            "value": "波特兰",
+            "entity": "away"
+          },
+          {
+            "start": 17,
+            "end": 19,
+            "value": "数据",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "查询美国职业联赛", 
+        "intent": "event_search", 
+        "entities": [          {
+            "start": 2,
+            "end": 8,
+            "value": "美国职业联赛",
+            "entity": "league"
+          }]
+      },
+      {
+        "text": "查询进行中的比赛", 
+        "intent": "inplay_event",
+        "entities":[]
+      },
+      {
+        "text": "进行中的比赛", 
+        "intent": "inplay_event",
+        "entities":[]
+      },
+      {
+        "text": "罗列进行中的比赛", 
+        "intent": "inplay_event",
+        "entities":[]
+      },
+      {
+        "text": "看看现在的比赛", 
+        "intent": "inplay_event",
+        "entities":[]
+      },
+      {
+        "text": "现在美国的比赛", 
+        "intent": "inplay_event",
+        "entities":[{
+            "start" : 2,
+            "end" : 4,
+            "value" : "美国",
+            "entity" : "league"
+        }]
+      },
+      {
+        "text": "列出现在中国的比赛", 
+        "intent": "inplay_event",
+        "entities":[{
+            "start" : 2,
+            "end" : 4,
+            "value" : "中国",
+            "entity" : "league"
+        }]
+      },
+      {
+        "text": "我要看所有法国的比赛", 
+        "intent": "inplay_event",
+        "entities":[{
+            "start" : 5,
+            "end" : 7,
+            "value" : "法国",
+            "entity" : "league"
+        }]
+      },
+      {
+        "text": "滚球美国比赛", 
+        "intent": "inplay_event",
+        "entities":[{
+            "start" : 2,
+            "end" : 4,
+            "value" : "美国",
+            "entity" : "league"
+        }]
+      },
+      {
+        "text": "滚球盘巴西比赛", 
+        "intent": "inplay_event",
+        "entities":[{
+            "start" : 3,
+            "end" : 5,
+            "value" : "巴西",
+            "entity" : "league"
+        }]
+      },
+      {
+        "text": "滚球", 
+        "intent": "inplay_event",
+        "entities":[]
+      },
+      {
+        "text": "查询美职联赛", 
+        "intent": "event_search", 
+        "entities": [          {
+            "start": 2,
+            "end": 6,
+            "value": "美国职业联赛",
+            "entity": "league"
+          }]
+      },
+      {
+        "text": "美职", 
+        "intent": "event_search", 
+        "entities": [          {
+            "start": 0,
+            "end": 2,
+            "value": "美国职业联赛",
+            "entity": "league"
+          }]
+      },
+      {
+        "text": "今天美职比赛", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "今天",
+            "entity": "date"
+          },
+        {
+            "start": 2,
+            "end": 4,
+            "value": "美国职业联赛",
+            "entity": "league"
+          }]
+      }, 
+      {
+        "text": "美国职业联赛波士顿对纽约比分是多少？", 
+        "intent": "event_search", 
+        "entities": [
+        {
+            "start": 0,
+            "end": 6,
+            "value": "美国职业联赛",
+            "entity": "league"
+          },
+          {
+            "start": 6,
+            "end": 9,
+            "value": "波士顿",
+            "entity": "home"
+          },
+          {
+            "start": 10,
+            "end": 12,
+            "value": "纽约",
+            "entity": "away"
+          },
+          {
+            "start": 12,
+            "end": 14,
+            "value": "比分",
+            "entity": "data"
+          }]
+      },
+      {
+        "text": "MLS", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 3,
+            "value": "MLS",
+            "entity" : "league"
+        }]
+      },
+      {
+        "text": "20181006", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 8,
+            "value": "20181006",
+            "entity" : "date"
+        }]
+      }, 
+      {
+        "text": "20170225", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 8,
+            "value": "20170225",
+            "entity" : "date"
+        }]
+      }, 
+      {
+        "text": "20180430", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 8,
+            "value": "20170225",
+            "entity" : "date"
+        }]
+      }, 
+      {
+        "text": "刚刚", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "刚刚",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "现在", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "现在",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "今天", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "今天",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "明天", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "明天",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "后天", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "后天",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "阵容", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "阵容",
+            "entity" : "data"
+        }]
+      }, 
+      {
+        "text": "数据", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "数据",
+            "entity" : "data"
+        }]
+      },
+      {
+        "text": "场馆", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "场馆",
+            "entity" : "data"
+        }]
+      },
+      {
+        "text": "场地", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "场馆",
+            "entity" : "data"
+        }]
+      },
+      {
+        "text": "地点", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "场馆",
+            "entity" : "data"
+        }]
+      },
+      {
+        "text": "事件", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "事件",
+            "entity" : "data"
+        }]
+      },
+      {
+        "text": "大后天", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "大后天",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "昨天", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "昨天",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "前天", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "前天",
+            "entity": "date"
+        }]
+      }, 
+      {
+        "text": "大前天", 
+        "intent": "event_search", 
+        "entities": [{
+            "start": 0,
+            "end": 2,
+            "value": "大前天",
+            "entity": "date"
+        }]
+      },
+      {
+        "text": "hello", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "hi", 
+        "intent": "greet", 
+        "entities": []
+      }
+      ,
+      {
+        "text": "goodbye", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "bye", 
+        "intent": "greet", 
+        "entities": []
+      }, 
+      {
+        "text": "现在有什么法国比赛", 
+        "intent": "inplay_event", 
+        "entities": [{
+            "start": 5,
+            "end": 7,
+            "value": "法国",
+            "entity": "league"}]
+        }, 
+      {
+        "text": "现在有什么美国比赛", 
+        "intent": "inplay_event", 
+        "entities": [{
+            "start": 5,
+            "end": 7,
+            "value": "美国",
+            "entity": "league"}]
+        }, 
+      {
+        "text": "现在有什么中国比赛", 
+        "intent": "inplay_event", 
+        "entities": [{
+            "start": 5,
+            "end": 7,
+            "value": "中国",
+            "entity": "league"}]
+        }, 
+      {
+        "text": "帮助", 
+        "intent": "help", 
+        "entities": []
+      }, 
+      {
+        "text": "菜单", 
+        "intent": "help", 
+        "entities": []
+      }, 
+      {
+        "text": "你能做些什么？", 
+        "intent": "help", 
+        "entities": []
+      }
+    ]
+  }
+}
