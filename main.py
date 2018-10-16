@@ -426,8 +426,6 @@ write_params(db)
 bot = Bot()
 
 
-#my_friend = bot.friends().search(u'JAYDEN')[0]
-
 @bot.register()
 def reply_friend(msg):
     db = read_params()
