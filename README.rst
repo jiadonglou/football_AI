@@ -31,11 +31,15 @@ API要求
 
 运行方法
 ----------------
-1. 运行代码
+1.下载total_word_feature_extractor_zh.dat文件至 ./data/
+	链接:https://pan.baidu.com/s/1NX-dZ5ONDEDYhZ0-PdW5Ng  密码:g7cw
+
+2. 运行代码
 ..  code:: shell 
 	python main.py
 
-2. 扫描二维码登陆
+3. 扫描二维码登陆
 
-3. 开始运行
+4. 开始运行
 | **用户发送'你好'触发搜索功能，发送‘再见’结束搜索功能**
+
