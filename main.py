@@ -43,7 +43,7 @@ interpreter = trainer.train(training_data)
 translator = 'baidu'
 
 # Google Translate Credential Json File
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./data/Football-a337503a7b32.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./data/Football-a337503a7b32.json"
 
 # Youdao translate credential
 appKey = '4cfb5abb68739eb9'
@@ -350,7 +350,7 @@ def inplay_respond(message, params):
     inplay_str = "进行中的比赛："
     results = inplay_event()
     if len(results['results']) == 0:
-        return "没有进行中的比赛"
+        return "没有进行中的比赛", params
     n = results['pager']['total']
     #n = min(15, results['pager']['total']) 
     if "league" not in params:
