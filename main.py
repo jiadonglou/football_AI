@@ -14,7 +14,7 @@ from rasa_nlu import config
 
 import requests
 import json
-from google.cloud import translate
+#from google.cloud import translate
 import os
 import random
 import urllib.request
@@ -43,7 +43,7 @@ interpreter = trainer.train(training_data)
 translator = 'baidu'
 
 # Google Translate Credential Json File
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./data/Football-a337503a7b32.json"
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "./data/Football-a337503a7b32.json"
 
 # Youdao translate credential
 appKey = '4cfb5abb68739eb9'
@@ -385,17 +385,21 @@ def inplay_respond(message, params):
 
 
 def respond(message, params):
-    intent = interpreter.parse(message)["intent"]["name"]
+    intent = interpreter.parse(message)["intent"]['name']
+    confidence = interpreter.parse(message)["intent"]['confidence']
+    print(interpreter.parse(message)["intent"])
+    if confidence < 0.45:
+        return '', params
     if intent == 'help':
         return responses[7], params
     if intent == 'greet':
         params['searching'] = True
-        return '你好～',params
+        return '你好～开启搜索模式',params
     if params['searching'] == False:
         return '', params
     if intent == 'goodbye' :
         params = {"searching" : False}
-        return '再见～',params
+        return '再见～搜索模式关闭',params
     if intent == 'event_search' :
         return search_respond(message, params)
     if intent == 'inplay_event':

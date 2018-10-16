@@ -7,6 +7,61 @@
         "entities": []
       },
       {
+        "text": "你好呀", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "你好～", 
+        "intent": "greet", 
+        "entities": []
+      },
+      {
+        "text": "确实", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "对的", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "嗯", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "恩", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "66666", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "是的", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "好的", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "没问题", 
+        "intent": "affirm", 
+        "entities": []
+      },
+      {
+        "text": "了解", 
+        "intent": "affirm", 
+        "entities": []
+      },  
+      {
         "text": "再见", 
         "intent": "goodbye", 
         "entities": []
@@ -820,6 +875,43 @@
             "value": "中国",
             "entity": "league"}]
         }, 
+      {
+        "text": "查看欧洲的比赛", 
+        "intent": "inplay_event", 
+        "entities": [{
+            "start": 2,
+            "end": 4,
+            "value": "欧洲",
+            "entity": "league"}]
+        }, 
+      {
+        "text": "现在有什么中国比赛", 
+        "intent": "inplay_event", 
+        "entities": [{
+            "start": 5,
+            "end": 7,
+            "value": "中国",
+            "entity": "league"}]
+        }, 
+      {
+        "text": "只看日本的比赛", 
+        "intent": "inplay_event", 
+        "entities": [{
+            "start": 2,
+            "end": 4,
+            "value": "日本",
+            "entity": "league"}]
+        }, 
+      {
+        "text": "只看德国的比赛", 
+        "intent": "inplay_event", 
+        "entities": [{
+            "start": 2,
+            "end": 4,
+            "value": "德国",
+            "entity": "league"}]
+        }, 
+      
       {
         "text": "帮助", 
         "intent": "help", 
