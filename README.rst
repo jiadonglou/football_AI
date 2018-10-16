@@ -35,8 +35,7 @@ API要求
 	百度网盘下载链接：https://pan.baidu.com/s/1NX-dZ5ONDEDYhZ0-PdW5Ng  密码:g7cw
 
 1. 运行代码
-
-..  code:: shell 
+..  code::shell 
 	python main.py
 
 3. 扫描二维码登陆
