@@ -32,10 +32,11 @@ API要求
 运行方法
 ----------------
 1.下载total_word_feature_extractor_zh.dat文件至 ./data/
-	[点击前往百度网盘下载](https://pan.baidu.com/s/1NX-dZ5ONDEDYhZ0-PdW5Ng)  密码:g7cw
+	百度网盘下载链接：https://pan.baidu.com/s/1NX-dZ5ONDEDYhZ0-PdW5Ng  密码:g7cw
 
-2. 运行代码
-..  python main.py
+1. 运行代码
+..  code:: shell 
+	python main.py
 
 3. 扫描二维码登陆
 
